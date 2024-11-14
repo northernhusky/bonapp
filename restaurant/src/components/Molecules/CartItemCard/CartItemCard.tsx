@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromCart, decreaseQuantity, increaseQuantity } from '../../../features/cart/cartSlice';
+import { removeFromCart, decreaseQuantity, increaseQuantity } from '../../../features/Cart/cartSlice';
 import { CartItem } from '../../../types/types';
+import { Button, InputNumber, Card } from 'antd';
 
 interface CartItemProps {
   item: CartItem;
@@ -14,26 +15,32 @@ const CartItemCard: React.FC<CartItemProps> = ({ item }) => {
     dispatch(removeFromCart(item.id));
   };
 
-  const handleDecreaseQuantity = () => {
-    dispatch(decreaseQuantity(item.id));
-  };
-
-  const handleIncreaseQuantity = () => {
-    dispatch(increaseQuantity(item.id));
-  };
-
   return (
-    <div className="cart-item">
-      <img src={item.img} alt={item.title} />
+    <Card 
+      hoverable 
+      style={{ marginBottom: 20, padding: '15px' }}
+      cover={<img alt={item.title} src={item.img} />}
+    >
       <h3>{item.title}</h3>
       <p>Price: ${item.price}</p>
-      <div className="quantity-controls">
-        <button onClick={handleDecreaseQuantity} disabled={item.quantity <= 1}>-</button>
-        <span>{item.quantity}</span>
-        <button onClick={handleIncreaseQuantity}>+</button>
+      <div style={{ display: 'flex', alignItems: 'center', marginBottom: '10px' }}>
+        <InputNumber 
+          value={item.quantity} 
+          min={1} 
+          style={{ width: '60px' }} 
+          onChange={(value) => {
+            if (value! < item.quantity) {
+              dispatch(decreaseQuantity(item.id));
+            } else {
+              dispatch(increaseQuantity(item.id));
+            }
+          }} 
+        />
       </div>
-      <button onClick={handleRemoveFromCart}>Remove</button>
-    </div>
+      <Button onClick={handleRemoveFromCart}>
+        Remove
+      </Button>
+    </Card>
   );
 };
 

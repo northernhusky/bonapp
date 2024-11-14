@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { addToCart } from '../../../features/cart/cartSlice';
+import { addToCart } from '../../../features/Cart/cartSlice';
 import { MenuItem } from '../../../types/types';
 import { Button, Card } from 'antd';
 

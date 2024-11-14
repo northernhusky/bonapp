@@ -1,8 +1,11 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCart } from '../../../features/cart/cartSlice';
-import { selectCartItems } from '../../../features/cart/cartSlice';
+import { clearCart } from '../../../features/Cart/cartSlice';
+import { selectCartItems } from '../../../features/Cart/cartSlice';
 import CartItemCard from '../../Molecules/CartItemCard/CartItemCard';
 import { Link } from 'react-router-dom';
+import { Button, Row, Col, Empty, Typography } from 'antd';
+
+const { Title } = Typography;
 
 const CartPage = () => {
   const dispatch = useDispatch();
@@ -13,17 +16,34 @@ const CartPage = () => {
   };
 
   return (
-    <div>
-      <h1>Cart</h1>
+    <div style={{ padding: '20px' }}>
+      <Title level={1}>Cart</Title>
       {cartItems.length === 0 ? (
-        <p>Cart is empty</p>
+        <div>
+          <Empty description="Cart is empty" />
+          <Link to="/">
+            <Button type="primary" style={{ marginTop: '20px' }}>
+              Return to Menu
+            </Button>
+          </Link>
+        </div>
       ) : (
         <div>
-          {cartItems.map((item) => (
-            <CartItemCard key={item.id} item={item} />
-          ))}
-          <button onClick={handleClearCart}>Clear cart</button>
-          <Link to="/">Return to menu page</Link>
+          <Row gutter={16}>
+            {cartItems.map((item) => (
+              <Col key={item.id} xs={24} sm={12} md={8} lg={6}>
+                <CartItemCard item={item} />
+              </Col>
+            ))}
+          </Row>
+          <div style={{ marginTop: '20px' }}>
+            <Button type="default" onClick={handleClearCart} style={{ marginRight: '10px' }}>
+              Clear Cart
+            </Button>
+            <Link to="/">
+              <Button type="primary">Return to Menu</Button>
+            </Link>
+          </div>
         </div>
       )}
     </div>
