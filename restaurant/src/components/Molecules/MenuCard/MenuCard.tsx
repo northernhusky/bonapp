@@ -1,18 +1,28 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../../../features/cart/cartSlice';
 import { MenuItem } from '../../../types/types';
+import { Link } from 'react-router-dom';
 
 interface MenuCardProps {
   item: MenuItem;
 }
 
 const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    dispatch(addToCart(item));
+  };
+
   return (
     <div className="menu-card">
-      <img src={item.img} alt={item.title} className="menu-card-image" />
-      <h2 className="menu-card-title">{item.title}</h2>
-      <p className="menu-card-description">{item.description}</p>
-      <p className="menu-card-price">Price: ${item.price}</p>
-      <p className="menu-card-rating">Rating: {item.rating}</p>
+      <img src={item.img} alt={item.title} />
+      <h3>{item.title}</h3>
+      <p>{item.description}</p>
+      <p>Price: ${item.price}</p>
+      <button onClick={handleAddToCart}>Add to cart</button>
+      <Link to="/cart">Перейти в корзину</Link>
     </div>
   );
 };
