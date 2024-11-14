@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromCart } from '../../../features/cart/cartSlice';
+import { removeFromCart, decreaseQuantity, increaseQuantity } from '../../../features/cart/cartSlice';
 import { CartItem } from '../../../types/types';
 
 interface CartItemProps {
@@ -14,12 +14,24 @@ const CartItemCard: React.FC<CartItemProps> = ({ item }) => {
     dispatch(removeFromCart(item.id));
   };
 
+  const handleDecreaseQuantity = () => {
+    dispatch(decreaseQuantity(item.id));
+  };
+
+  const handleIncreaseQuantity = () => {
+    dispatch(increaseQuantity(item.id));
+  };
+
   return (
     <div className="cart-item">
       <img src={item.img} alt={item.title} />
       <h3>{item.title}</h3>
       <p>Price: ${item.price}</p>
-      <p>Quantity: {item.quantity}</p>
+      <div className="quantity-controls">
+        <button onClick={handleDecreaseQuantity} disabled={item.quantity <= 1}>-</button>
+        <span>{item.quantity}</span>
+        <button onClick={handleIncreaseQuantity}>+</button>
+      </div>
       <button onClick={handleRemoveFromCart}>Remove</button>
     </div>
   );

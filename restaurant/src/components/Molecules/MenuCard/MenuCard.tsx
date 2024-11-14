@@ -22,7 +22,7 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
       <p>{item.description}</p>
       <p>Price: ${item.price}</p>
       <button onClick={handleAddToCart}>Add to cart</button>
-      <Link to="/cart">Перейти в корзину</Link>
+      <Link to="/cart">Open cart</Link>
     </div>
   );
 };

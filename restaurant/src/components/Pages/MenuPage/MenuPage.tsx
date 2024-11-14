@@ -1,6 +1,10 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMenuItems, selectMenuItems, selectMenuStatus, selectMenuError } from '../../../features/menu/menuSlice';
+import { 
+  fetchMenuItems, 
+  selectMenuItems, 
+  selectMenuStatus, 
+  selectMenuError } from '../../../features/menu/menuSlice';
 import MenuCard from '../../Molecules/MenuCard/MenuCard';
 import { AppDispatch } from '../../../redux/store';
 
