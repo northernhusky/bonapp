@@ -1,12 +1,14 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { 
-  fetchMenuItems, 
-  selectMenuItems, 
-  selectMenuStatus, 
-  selectMenuError } from '../../../features/menu/menuSlice';
+  fetchMenuItems,
+  selectMenuItems,
+  selectMenuStatus,
+  selectMenuError
+} from '../../../features/menu/menuSlice';
 import MenuCard from '../../Molecules/MenuCard/MenuCard';
 import { AppDispatch } from '../../../redux/store';
+import { Link } from 'react-router-dom';
 
 const MenuPage = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -32,6 +34,7 @@ const MenuPage = () => {
 
   return (
     <div>
+      <Link to="/cart">Open cart</Link>
       {menuItems.map((item) => (
         <MenuCard key={item.id} item={item} />
       ))}

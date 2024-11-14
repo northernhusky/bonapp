@@ -2,7 +2,6 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/cart/cartSlice';
 import { MenuItem } from '../../../types/types';
-import { Link } from 'react-router-dom';
 
 interface MenuCardProps {
   item: MenuItem;
@@ -22,7 +21,6 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
       <p>{item.description}</p>
       <p>Price: ${item.price}</p>
       <button onClick={handleAddToCart}>Add to cart</button>
-      <Link to="/cart">Open cart</Link>
     </div>
   );
 };
