@@ -12,4 +12,5 @@ export interface MenuItem {
 export interface MenuState {
     items: MenuItem[];
     status: 'idle' | 'loading' | 'succeeded' | 'failed';
+    error: string | null;
 }
