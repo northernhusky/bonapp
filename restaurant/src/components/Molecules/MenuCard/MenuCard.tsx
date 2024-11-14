@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/cart/cartSlice';
 import { MenuItem } from '../../../types/types';
+import { Button, Card } from 'antd';
 
 interface MenuCardProps {
   item: MenuItem;
@@ -16,11 +17,17 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
 
   return (
     <div className="menu-card">
-      <img src={item.img} alt={item.title} />
-      <h3>{item.title}</h3>
-      <p>{item.description}</p>
-      <p>Price: ${item.price}</p>
-      <button onClick={handleAddToCart}>Add to cart</button>
+      <Card
+        key={item.id}
+        hoverable
+        style={{ width: 240, margin: '10px', display: 'inline-block' }}
+        cover={<img alt={item.title} src={item.img} />}
+      >
+        <Card.Meta title={item.title} description={`Price: $${item.price}`} />
+         <Button type="primary" style={{ marginTop: 10 }} onClick={handleAddToCart}>
+          Add to Cart
+        </Button>
+      </Card>
     </div>
   );
 };
