@@ -3,12 +3,15 @@ import { clearCart, selectCartItems } from '../../../features/Cart/cartSlice';
 import CartItemCard from '../../Molecules/CartItemCard/CartItemCard';
 import { Link } from 'react-router-dom';
 import { Button, Row, Col, Empty, Typography } from 'antd';
+import { useState } from 'react';
+import CheckoutModal from '../../Organisms/CheckoutModal/CheckoutModal';
 
 const { Title, Text } = Typography;
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+  const [isCheckoutVisible, setIsCheckoutVisible] = useState(false);
 
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -19,17 +22,30 @@ const Cart = () => {
     dispatch(clearCart());
   };
 
+  const handleProceedToCheckout = () => {
+    setIsCheckoutVisible(true);
+  };
+
+  const handleCheckoutClose = () => {
+    setIsCheckoutVisible(false);
+  };
+
   return (
     <div style={{ padding: '20px' }}>
-      <Title level={1}>Cart</Title>
+      <Row justify="space-between" align="middle" style={{ marginBottom: '20px' }}>
+        <Col>
+          <Title level={1}>Cart</Title>
+        </Col>
+        <Col>
+          <Link to="/" style={{ marginRight: '10px' }}>
+            <Button type="default">Return to Menu</Button>
+          </Link>
+        </Col>
+      </Row>
+      
       {cartItems.length === 0 ? (
         <div>
           <Empty description="Cart is empty" />
-          <Link to="/">
-            <Button type="primary" style={{ marginTop: '20px' }}>
-              Return to Menu
-            </Button>
-          </Link>
         </div>
       ) : (
         <div>
@@ -41,20 +57,41 @@ const Cart = () => {
             ))}
           </Row>
 
-          <div style={{ marginTop: '20px', fontSize: '18px' }}>
-            <Text strong>Total Price: ${totalPrice.toFixed(2)}</Text>
-          </div>
+          <Row justify="end" align="middle" style={{ marginTop: '20px' }}>
+            <Col>
+              <Text strong style={{ marginRight: '10px' }}>
+                Total Price:
+              </Text>
+            </Col>
+            <Col>
+              <Title level={3}>${totalPrice.toFixed(2)}</Title>
+            </Col>
+          </Row>
 
-          <div style={{ marginTop: '20px' }}>
-            <Button type="default" onClick={handleClearCart} style={{ marginRight: '10px' }}>
-              Clear Cart
-            </Button>
-            <Link to="/">
-              <Button type="primary">Return to Menu</Button>
-            </Link>
-          </div>
+          <Row justify="end" align="middle" style={{ marginTop: '20px' }}>
+            <Col>
+              <Button type="default" onClick={handleClearCart} style={{ marginRight: '10px' }}>
+                Clear Cart
+              </Button>
+            </Col>
+            <Col>
+              <Button
+                type="primary"
+                style={{ marginLeft: '10px' }}
+                onClick={handleProceedToCheckout}
+              >
+                Proceed to Checkout
+              </Button>
+            </Col>
+          </Row>
         </div>
       )}
+
+      <CheckoutModal
+        visible={isCheckoutVisible}
+        cartItems={cartItems}
+        onClose={handleCheckoutClose}
+      />
     </div>
   );
 };
