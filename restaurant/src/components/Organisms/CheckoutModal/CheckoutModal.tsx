@@ -16,7 +16,7 @@ const CheckoutModal: React.FC<{
 
   return (
     <Modal
-      visible={visible}
+      open={visible}
       onCancel={onClose}
       footer={null}
       width={600}

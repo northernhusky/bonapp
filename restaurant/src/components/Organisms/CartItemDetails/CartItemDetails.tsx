@@ -27,7 +27,7 @@ const CartItemDetails: React.FC<{
   return (
     <Modal
       title={`Details for ${item.title}`}
-      visible={isVisible}
+      open={isVisible}
       onCancel={onClose}
       footer={null}
     >

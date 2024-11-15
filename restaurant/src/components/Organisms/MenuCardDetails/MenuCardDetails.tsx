@@ -13,7 +13,7 @@ const MenuCardDetails: React.FC<{
   return (
     <Modal
       title={item.title}
-      visible={isVisible}
+      open={isVisible}
       onCancel={onClose}
       footer={[
         <Button
