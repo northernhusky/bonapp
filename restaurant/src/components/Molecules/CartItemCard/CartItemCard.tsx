@@ -5,11 +5,7 @@ import { CartItem } from '../../../types/types';
 import { Button, InputNumber, Card } from 'antd';
 import CartItemDetails from '../../Organisms/CartItemDetails/CartItemDetails';
 
-interface CartItemProps {
-  item: CartItem;
-}
-
-const CartItemCard: React.FC<CartItemProps> = ({ item }) => {
+const CartItemCard: React.FC<{ item: CartItem }> = ({ item }) => {
   const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -34,7 +30,7 @@ const CartItemCard: React.FC<CartItemProps> = ({ item }) => {
         onClick={handleCardClick}
       >
         <h3>{item.title}</h3>
-        <p>Price: ${item.price}</p>
+        <p>Price: ${item.price.toFixed(2)}</p>
         <div
           style={{ marginBottom: '10px' }}
           onClick={(e) => e.stopPropagation()}

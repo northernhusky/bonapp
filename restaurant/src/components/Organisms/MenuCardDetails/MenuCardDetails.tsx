@@ -4,19 +4,12 @@ import { MenuItem } from '../../../types/types';
 
 const { Title, Paragraph } = Typography;
 
-interface MenuDetailsProps {
+const MenuCardDetails: React.FC<{
   item: MenuItem;
   isVisible: boolean;
   onClose: () => void;
   addToCart: () => void;
-}
-
-const MenuCardDetails: React.FC<MenuDetailsProps> = ({
-  item,
-  isVisible,
-  onClose,
-  addToCart,
-}) => {
+}> = ({ item, isVisible, onClose, addToCart }) => {
   return (
     <Modal
       title={item.title}
@@ -48,7 +41,7 @@ const MenuCardDetails: React.FC<MenuDetailsProps> = ({
       <Title level={4}>Category</Title>
       <Paragraph>{item.category}</Paragraph>
       <Title level={4}>Price</Title>
-      <Paragraph>${item.price}</Paragraph>
+      <Paragraph>${item.price.toFixed(2)}</Paragraph>
       <Title level={4}>Rating</Title>
       <Paragraph>{item.rating}</Paragraph>
       <Title level={4}>Toppings</Title>

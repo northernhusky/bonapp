@@ -6,17 +6,11 @@ import { decreaseQuantity, increaseQuantity } from '../../../features/Cart/cartS
 
 const { Title, Paragraph } = Typography;
 
-interface CartItemDetailsProps {
+const CartItemDetails: React.FC<{
   item: CartItem;
   isVisible: boolean;
   onClose: () => void;
-}
-
-const CartItemDetails: React.FC<CartItemDetailsProps> = ({
-  item,
-  isVisible,
-  onClose,
-}) => {
+}> = ({ item, isVisible, onClose }) => {
   const dispatch = useDispatch();
 
   const handleQuantityChange = (value: number | null) => {
@@ -51,7 +45,7 @@ const CartItemDetails: React.FC<CartItemDetailsProps> = ({
       <Title level={4}>Price</Title>
       <Paragraph>${item.price}</Paragraph>
       <Title level={4}>Total</Title>
-      <Paragraph>${item.quantity * item.price}</Paragraph>
+      <Paragraph>${(item.quantity * item.price).toFixed(2)}</Paragraph>
       <Title level={4}>Quantity</Title>
       <InputNumber
         value={item.quantity}

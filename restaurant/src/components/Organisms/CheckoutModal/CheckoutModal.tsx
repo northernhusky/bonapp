@@ -4,13 +4,11 @@ import { CartItem } from '../../../types/types';
 
 const { Title, Text } = Typography;
 
-interface CheckoutModalProps {
+const CheckoutModal: React.FC<{
   visible: boolean;
   cartItems: CartItem[];
   onClose: () => void;
-}
-
-const CheckoutModal: React.FC<CheckoutModalProps> = ({ visible, cartItems, onClose }) => {
+}> = ({ visible, cartItems, onClose }) => {
   const totalPrice = cartItems.reduce(
     (total, item) => total + item.price * item.quantity,
     0
@@ -32,12 +30,12 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ visible, cartItems, onClo
                 <strong>{item.title}</strong>
                 <div>Price: ${item.price}</div>
                 <div>Quantity: {item.quantity}</div>
-                <div>Total: ${item.price * item.quantity}</div>
+                <div>Total: ${(item.quantity * item.price).toFixed(2)}</div>
               </div>
             </Col>
           ))}
         </Row>
-        
+
         <div style={{ marginTop: '20px', fontSize: '18px', marginBottom: '20px' }}>
           <Text strong>Total Price:</Text>
         </div>

@@ -5,11 +5,7 @@ import { MenuItem } from '../../../types/types';
 import { Button, Card, Row, Col } from 'antd';
 import MenuCardDetails from '../../Organisms/MenuCardDetails/MenuCardDetails';
 
-interface MenuCardProps {
-  item: MenuItem;
-}
-
-const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
+const MenuCard: React.FC<{ item: MenuItem }> = ({ item }) => {
   const dispatch = useDispatch();
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -40,7 +36,7 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
               cover={<img alt={item.title} src={item.img} />}
               onClick={handleCardClick}
             >
-              <Card.Meta title={item.title} description={`Price: $${item.price}`} />
+            <Card.Meta title={item.title} description={`Price: $${item.price.toFixed(2)}`} />
               <Button
                 type="primary"
                 style={{ marginTop: 10, width: '100%' }}
