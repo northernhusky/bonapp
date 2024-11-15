@@ -1,15 +1,19 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCart } from '../../../features/Cart/cartSlice';
-import { selectCartItems } from '../../../features/Cart/cartSlice';
+import { clearCart, selectCartItems } from '../../../features/Cart/cartSlice';
 import CartItemCard from '../../Molecules/CartItemCard/CartItemCard';
 import { Link } from 'react-router-dom';
 import { Button, Row, Col, Empty, Typography } from 'antd';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+
+  const totalPrice = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -36,6 +40,11 @@ const Cart = () => {
               </Col>
             ))}
           </Row>
+
+          <div style={{ marginTop: '20px', fontSize: '18px' }}>
+            <Text strong>Total Price: ${totalPrice.toFixed(2)}</Text>
+          </div>
+
           <div style={{ marginTop: '20px' }}>
             <Button type="default" onClick={handleClearCart} style={{ marginRight: '10px' }}>
               Clear Cart

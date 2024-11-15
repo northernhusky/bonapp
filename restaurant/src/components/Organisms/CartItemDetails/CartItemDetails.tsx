@@ -1,6 +1,8 @@
 import React from 'react';
-import { Modal, Typography } from 'antd';
+import { Modal, Typography, InputNumber } from 'antd';
+import { useDispatch } from 'react-redux';
 import { CartItem } from '../../../types/types';
+import { decreaseQuantity, increaseQuantity } from '../../../features/Cart/cartSlice';
 
 const { Title, Paragraph } = Typography;
 
@@ -15,6 +17,19 @@ const CartItemDetails: React.FC<CartItemDetailsProps> = ({
   isVisible,
   onClose,
 }) => {
+  const dispatch = useDispatch();
+
+  const handleQuantityChange = (value: number | null) => {
+    if (value && value > 0) {
+      const delta = value - item.quantity;
+      if (delta > 0) {
+        dispatch(increaseQuantity(item.id));
+      } else {
+        dispatch(decreaseQuantity(item.id));
+      }
+    }
+  };
+
   return (
     <Modal
       title={`Details for ${item.title}`}
@@ -38,7 +53,12 @@ const CartItemDetails: React.FC<CartItemDetailsProps> = ({
       <Title level={4}>Total</Title>
       <Paragraph>${item.quantity * item.price}</Paragraph>
       <Title level={4}>Quantity</Title>
-      <Paragraph>{item.quantity}</Paragraph>
+      <InputNumber
+        value={item.quantity}
+        min={1}
+        style={{ width: '13%' }}
+        onChange={handleQuantityChange}
+      />
     </Modal>
   );
 };
