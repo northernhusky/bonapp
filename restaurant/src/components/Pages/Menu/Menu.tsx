@@ -9,7 +9,7 @@ import { MenuItem } from '../../../types/types';
 
 const { Title } = Typography;
 
-const MenuPage = () => {
+const Menu = () => {
   const dispatch = useDispatch<AppDispatch>();
   const menuItems = useSelector(selectMenuItems);
   const status = useSelector(selectMenuStatus);
@@ -61,4 +61,4 @@ const MenuPage = () => {
   );
 };
 
-export default MenuPage;
+export default Menu;

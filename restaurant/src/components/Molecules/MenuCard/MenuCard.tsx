@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/Cart/cartSlice';
 import { MenuItem } from '../../../types/types';
 import { Button, Card } from 'antd';
-import MenuDetails from '../../Organisms/MenuDetails/MenuDetails';
+import MenuCardDetails from '../../Organisms/MenuCardDetails/MenuCardDetails';
 
 interface MenuCardProps {
   item: MenuItem;
@@ -49,11 +49,11 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
         </Card>
       </div>
 
-      <MenuDetails
+      <MenuCardDetails
         item={item}
         isVisible={isModalVisible}
         onClose={handleModalClose}
-        onAddToCart={handleAddToCart}
+        addToCart={handleAddToCart}
       />
     </>
   );

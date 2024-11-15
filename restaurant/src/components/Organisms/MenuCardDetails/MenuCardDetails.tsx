@@ -8,14 +8,14 @@ interface MenuDetailsProps {
   item: MenuItem;
   isVisible: boolean;
   onClose: () => void;
-  onAddToCart: () => void;
+  addToCart: () => void;
 }
 
-const MenuDetails: React.FC<MenuDetailsProps> = ({
+const MenuCardDetails: React.FC<MenuDetailsProps> = ({
   item,
   isVisible,
   onClose,
-  onAddToCart,
+  addToCart,
 }) => {
   return (
     <Modal
@@ -27,7 +27,7 @@ const MenuDetails: React.FC<MenuDetailsProps> = ({
           key="add-to-cart"
           type="primary"
           onClick={() => {
-            onAddToCart();
+            addToCart();
             onClose();
           }}
         >
@@ -57,4 +57,4 @@ const MenuDetails: React.FC<MenuDetailsProps> = ({
   );
 };
 
-export default MenuDetails;
+export default MenuCardDetails;

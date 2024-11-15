@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import MenuPage from './components/Pages/MenuPage/MenuPage';
+import Menu from './components/Pages/Menu/Menu';
 import CartPage from './components/Pages/Cart/CartPage';
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<MenuPage />} />
+        <Route path="/" element={<Menu />} />
         <Route path="/cart" element={<CartPage />} />
       </Routes>
     </Router>
