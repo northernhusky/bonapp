@@ -33,7 +33,7 @@ const CheckoutModal: React.FC<{
                   style={{ width: '100%', marginBottom: '20px' }}
                 />
                 <strong>{item.title}</strong>
-                <div>Price: ${item.price}</div>
+                <div>Price: ${item.price.toFixed(2)}</div>
                 <div>Quantity: {item.quantity}</div>
                 <div>Total: ${(item.quantity * item.price).toFixed(2)}</div>
               </div>

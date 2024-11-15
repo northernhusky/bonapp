@@ -36,15 +36,15 @@ const MenuCardDetails: React.FC<{
         src={item.img}
         style={{ width: '100%', marginBottom: '20px' }}
       />
-      <Title level={4}>Description</Title>
+      <Title level={5}>Description</Title>
       <Paragraph>{item.description}</Paragraph>
-      <Title level={4}>Category</Title>
+      <Title level={5}>Category</Title>
       <Paragraph>{item.category}</Paragraph>
-      <Title level={4}>Price</Title>
+      <Title level={5}>Price</Title>
       <Paragraph>${item.price.toFixed(2)}</Paragraph>
-      <Title level={4}>Rating</Title>
+      <Title level={5}>Rating</Title>
       <Paragraph>{item.rating}</Paragraph>
-      <Title level={4}>Toppings</Title>
+      <Title level={5}>Toppings</Title>
       <Paragraph>{item.toppings.join(', ')}</Paragraph>
     </Modal>
   );

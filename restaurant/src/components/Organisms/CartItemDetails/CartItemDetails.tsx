@@ -36,14 +36,14 @@ const CartItemDetails: React.FC<{
         src={item.img}
         style={{ width: '100%', marginBottom: '20px' }}
       />
-      <Title level={4}>Description</Title>
+      <Title level={5}>Description</Title>
       <Paragraph>{item.description}</Paragraph>
-      <Title level={4}>Category</Title>
+      <Title level={5}>Category</Title>
       <Paragraph>{item.category}</Paragraph>
-      <Title level={4}>Toppings</Title>
+      <Title level={5}>Toppings</Title>
       <Paragraph>{item.toppings.join(', ')}</Paragraph>
       <Title level={4}>Price</Title>
-      <Paragraph>${item.price}</Paragraph>
+      <Paragraph>${item.price.toFixed(2)}</Paragraph>
       <Title level={4}>Total</Title>
       <Paragraph>${(item.quantity * item.price).toFixed(2)}</Paragraph>
       <Title level={4}>Quantity</Title>
