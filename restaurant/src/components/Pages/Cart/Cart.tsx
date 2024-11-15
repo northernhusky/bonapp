@@ -58,13 +58,13 @@ const Cart = () => {
           </Row>
 
           <Row justify="end" align="middle" style={{ marginTop: '20px' }}>
-            <Col>
+            <Col style={{ marginTop: '20px'}}>
               <Text strong style={{ marginRight: '10px' }}>
                 Total Price:
               </Text>
             </Col>
             <Col>
-              <Title level={3}>${totalPrice.toFixed(2)}</Title>
+              <Title level={2}>${totalPrice.toFixed(2)}</Title>
             </Col>
           </Row>
 

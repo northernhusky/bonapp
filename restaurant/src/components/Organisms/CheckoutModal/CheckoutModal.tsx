@@ -41,7 +41,7 @@ const CheckoutModal: React.FC<{
           ))}
         </Row>
 
-        <div style={{ marginTop: '20px', fontSize: '18px', marginBottom: '20px' }}>
+        <div style={{ marginTop: '20px', fontSize: '18px', marginBottom: '-20px' }}>
           <Text strong>Total Price:</Text>
         </div>
         <Title level={3}>${totalPrice.toFixed(2)}</Title>

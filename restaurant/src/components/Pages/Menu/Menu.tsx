@@ -43,7 +43,7 @@ const Menu = () => {
         </Col>
         <Col>
           <Link to="/cart">
-            <Button type="primary">
+            <Button type="default">
               Open Cart
             </Button>
           </Link>
