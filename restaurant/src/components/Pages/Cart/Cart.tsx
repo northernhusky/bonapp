@@ -7,7 +7,7 @@ import { Button, Row, Col, Empty, Typography } from 'antd';
 
 const { Title } = Typography;
 
-const CartPage = () => {
+const Cart = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
 
@@ -50,4 +50,4 @@ const CartPage = () => {
   );
 };
 
-export default CartPage;
+export default Cart;
