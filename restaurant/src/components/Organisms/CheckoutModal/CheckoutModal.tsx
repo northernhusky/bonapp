@@ -27,6 +27,11 @@ const CheckoutModal: React.FC<{
           {cartItems.map((item) => (
             <Col key={item.id} xs={24} sm={12} md={8} lg={6} span={24}>
               <div style={{ marginBottom: '10px' }}>
+                <img
+                  alt={item.title}
+                  src={item.img}
+                  style={{ width: '100%', marginBottom: '20px' }}
+                />
                 <strong>{item.title}</strong>
                 <div>Price: ${item.price}</div>
                 <div>Quantity: {item.quantity}</div>

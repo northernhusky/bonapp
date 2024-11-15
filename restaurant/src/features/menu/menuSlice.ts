@@ -8,7 +8,11 @@ const initialState: MenuState = {
   error: null,
 };
 
-const API_URL = 'https://ymagyn-76ef3-default-rtdb.europe-west1.firebasedatabase.app/products.json';
+const API_URL = process.env.REACT_APP_API_URL;
+
+if (!API_URL) {
+  throw new Error('API URL is not defined');
+}
 
 export const fetchMenuItems = createAsyncThunk('menu/fetchMenuItems', async () => {
   const response = await fetch(API_URL);
