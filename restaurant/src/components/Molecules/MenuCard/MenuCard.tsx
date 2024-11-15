@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../features/Cart/cartSlice';
 import { MenuItem } from '../../../types/types';
-import { Button, Card } from 'antd';
+import { Button, Card, Row, Col } from 'antd';
 import MenuCardDetails from '../../Organisms/MenuCardDetails/MenuCardDetails';
 
 interface MenuCardProps {
@@ -28,25 +28,32 @@ const MenuCard: React.FC<MenuCardProps> = ({ item }) => {
   return (
     <>
       <div className="menu-card">
-        <Card
-          key={item.id}
-          hoverable
-          style={{ width: 240, margin: '10px', display: 'inline-block' }}
-          cover={<img alt={item.title} src={item.img} />}
-          onClick={handleCardClick}
-        >
-          <Card.Meta title={item.title} description={`Price: $${item.price}`} />
-          <Button
-            type="primary"
-            style={{ marginTop: 10 }}
-            onClick={(e) => {
-              e.stopPropagation();
-              handleAddToCart();
-            }}
-          >
-            Add to Cart
-          </Button>
-        </Card>
+        <Row justify="center" style={{ marginBottom: '16px' }}>
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <Card
+              key={item.id}
+              hoverable
+              style={{
+                width: '100%',
+                margin: '0 auto',
+              }}
+              cover={<img alt={item.title} src={item.img} />}
+              onClick={handleCardClick}
+            >
+              <Card.Meta title={item.title} description={`Price: $${item.price}`} />
+              <Button
+                type="primary"
+                style={{ marginTop: 10, width: '100%' }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleAddToCart();
+                }}
+              >
+                Add to Cart
+              </Button>
+            </Card>
+          </Col>
+        </Row>
       </div>
 
       <MenuCardDetails

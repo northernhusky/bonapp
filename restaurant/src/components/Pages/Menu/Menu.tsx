@@ -39,7 +39,7 @@ const Menu = () => {
     <div style={{ padding: '20px' }}>
       <Row justify="space-between" align="middle" style={{ marginBottom: '20px' }}>
         <Col>
-          <Title level={1}>Restaurant menu</Title>
+          <Title level={1}>Menu</Title>
         </Col>
         <Col>
           <Link to="/cart">
@@ -50,7 +50,7 @@ const Menu = () => {
         </Col>
       </Row>
 
-      <Row gutter={16}>
+      <Row gutter={[16, 16]}>
         {menuItems.map((item: MenuItem) => (
           <Col key={item.id} xs={24} sm={12} md={8} lg={6}>
             <MenuCard item={item} />
