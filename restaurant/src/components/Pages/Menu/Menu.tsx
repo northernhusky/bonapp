@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchMenuItems, selectMenuItems, selectMenuStatus, selectMenuError } from '../../../features/Menu/menuSlice';
+import { fetchMenuItems, selectMenuItems, selectMenuStatus, selectMenuError } from '../../../features/menu/menuSlice';
 import { AppDispatch } from '../../../redux/store';
 import { Link } from 'react-router-dom';
 import { Button, Spin, Alert, Row, Col, Typography } from 'antd';
