@@ -21,6 +21,7 @@ npm or yarn
 Clone the repository:
 
 git clone https://github.com/northernhusky/bonapp.git
+
 cd restaurant
 
 🔧Install all dependencies
