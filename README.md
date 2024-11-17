@@ -35,3 +35,6 @@ yarn start
 Open the application in a browser:
 
 Go to http://localhost:3000.
+
+To view Site online:
+https://sparkly-taiyaki-613e7c.netlify.app/
