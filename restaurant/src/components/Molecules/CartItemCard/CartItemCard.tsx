@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { removeFromCart, decreaseQuantity, increaseQuantity } from '../../../features/Cart/cartSlice';
+import { removeFromCart, decreaseQuantity, increaseQuantity } from '../../../features/cart/cartSlice';
 import { CartItem } from '../../../types/types';
 import { Button, InputNumber, Card } from 'antd';
 import CartItemDetails from '../../Organisms/CartItemDetails/CartItemDetails';

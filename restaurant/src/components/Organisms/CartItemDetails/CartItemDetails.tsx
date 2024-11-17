@@ -2,7 +2,7 @@ import React from 'react';
 import { Modal, Typography, InputNumber } from 'antd';
 import { useDispatch } from 'react-redux';
 import { CartItem } from '../../../types/types';
-import { decreaseQuantity, increaseQuantity } from '../../../features/Cart/cartSlice';
+import { decreaseQuantity, increaseQuantity } from '../../../features/cart/cartSlice';
 
 const { Title, Paragraph } = Typography;
 

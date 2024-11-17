@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCart, selectCartItems } from '../../../features/Cart/cartSlice';
+import { clearCart, selectCartItems } from '../../../features/cart/cartSlice';
 import CartItemCard from '../../Molecules/CartItemCard/CartItemCard';
 import { Link } from 'react-router-dom';
 import { Button, Row, Col, Empty, Typography } from 'antd';
